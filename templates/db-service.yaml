@@ -1,0 +1,13 @@
+# Headless service for stable DNS entries of StatefulSet members.
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.db.name }}-svc
+  labels:
+    app: {{ .Values.db.name }}
+spec:
+  selector:
+    app: {{ .Values.db.name }}
+  ports:
+    - port: {{ .Values.db.port }}
+  clusterIP: None
